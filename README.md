@@ -1,4 +1,4 @@
-#Chat chooses the game.
+# Chat chooses the game.
 
 
 
