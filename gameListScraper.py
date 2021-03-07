@@ -39,7 +39,7 @@ url = ['https://www.trueachievements.com/xbox-one/games/a',
        'https://www.trueachievements.com/xbox-one/games/0']
 
 listText = open("gamelist.txt", "w")
-listObject = {}
+listObject = []
 
 for i in range(len(url)):
 
@@ -47,7 +47,7 @@ for i in range(len(url)):
     soup = BeautifulSoup(req.content, 'html.parser')
 
     for item in soup.findAll('td', attrs={'class': 'game'}):
-        listObject[item.find('a').get_text().lower()] = 0
+        listObject.append(item.find('a').get_text().lower())
 
 listText.write(json.dumps(listObject))
 
