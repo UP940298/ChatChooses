@@ -40,7 +40,6 @@ function sendToFirebase(message) {
 
     firebase.database().ref(`game-names/${message}`).once("value", snapshot => {
         if (snapshot.exists()) {
-            console.log("exists", message);
             firebase.database().ref(`game-names/${message}`).set(firebase.database.ServerValue.increment(1));
         }
         else {
@@ -52,7 +51,7 @@ function sendToFirebase(message) {
 
 function messageChecker(message) {
     let wordCount = 0;
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < gameList.length; i++) {
         let gameName = gameList[i].split(" ");
         for (let j = 0; j < message.length; j++) {
             for (let k = 0; k < gameName.length; k++) {
